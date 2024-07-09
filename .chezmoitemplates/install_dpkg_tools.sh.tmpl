@@ -93,9 +93,8 @@ install_or_upgrade() {
 ARCH=$(dpkg --print-architecture)
 echo "Detected system architecture: $ARCH"
 
-install_or_upgrade "BurntSushi/ripgrep" "ripgrep" "rg" "$ARCH" ""
-install_or_upgrade "sharkdp/bat" "bat" "bat" "$ARCH" "musl"
-install_or_upgrade "sharkdp/fd" "fd" "fd" "$ARCH" "musl"
-install_or_upgrade "charmbracelet/gum" "gum" "gum" "$ARCH" ""
-
-echo "All tools have been checked and updated if necessary."
+{{ range $package := .packages.dpkg }}
+{{ with $package }}
+install_or_upgrade "{{ .repo }}" "{{ .name }}" "{{ .cmd }}" "$ARCH" "{{ .filter }}"
+{{ end }}
+{{ end }}

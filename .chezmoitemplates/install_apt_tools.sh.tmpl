@@ -28,5 +28,3 @@ sudo apt-get update
 {{- range .packages.apt }}
 install_if_needed "{{ . }}"
 {{- end }}
-
-echo "All tools have been checked and installed if necessary."

@@ -1,16 +1,17 @@
 #!/bin/bash
 
-{{ .chezmoi.sourceDir }}/scripts/fzf.sh
+# Source the execute_template function
+source {{ .chezmoi.sourceDir }}/scripts/execute_template.sh
 
+# Install fzf.sh
+{{ .chezmoi.sourceDir }}/scripts/install_fzf.sh
 
 if [ "{{ .install_apt }}" = "true" ]; then
-    # Read the template file
-    template=$(cat "{{ .chezmoi.sourceDir }}/scripts/install_apt_tools.sh.tmpl")
-
-    # Execute the template content as an inline template
-    chezmoi execute-template "$template" | bash
+    execute_template install_apt_tools.sh
 fi
 
 if [ "{{ .install_dpkg }}" = "true" ]; then
-  {{ .chezmoi.sourceDir }}/scripts/install_dpkg_tools.sh
+    execute_template install_dpkg_tools.sh
 fi
+
+echo "All tools have been checked and installed if necessary."
