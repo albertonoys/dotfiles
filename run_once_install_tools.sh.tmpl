@@ -1,0 +1,16 @@
+#!/bin/bash
+
+{{ .chezmoi.sourceDir }}/scripts/fzf.sh
+
+
+if [ "{{ .install_apt }}" = "true" ]; then
+    # Read the template file
+    template=$(cat "{{ .chezmoi.sourceDir }}/scripts/install_apt_tools.sh.tmpl")
+
+    # Execute the template content as an inline template
+    chezmoi execute-template "$template" | bash
+fi
+
+if [ "{{ .install_dpkg }}" = "true" ]; then
+  {{ .chezmoi.sourceDir }}/scripts/install_dpkg_tools.sh
+fi

@@ -1,0 +1,101 @@
+#!/bin/bash
+
+set -e
+set -u
+
+get_latest_version() {
+    local repo=$1
+    local release_info=$(curl -s "https://api.github.com/repos/$repo/releases/latest")
+    echo "$release_info" | grep -oP '"tag_name": "\K(.*)(?=")'
+}
+
+get_installed_version() {
+    local cmd=$1
+    if command -v "$cmd" >/dev/null 2>&1; then
+        case "$cmd" in
+            rg)
+                $cmd --version | head -n1 | cut -d' ' -f2
+                ;;
+            bat)
+                $cmd --version | cut -d' ' -f2
+                ;;
+            fd)
+                $cmd --version | cut -d' ' -f2
+                ;;
+            gum)
+                $cmd --version | cut -d' ' -f3
+                ;;
+            *)
+                echo "Unknown"
+                ;;
+        esac
+    else
+        echo "Not installed"
+    fi
+}
+
+version_gt() {
+    local v1=$(echo "$1" | sed 's/^v//')
+    local v2=$(echo "$2" | sed 's/^v//')
+    test "$(printf '%s\n' "$v1" "$v2" | sort -V | head -n 1)" != "$v1"
+}
+
+install_or_upgrade() {
+    local repo=$1
+    local package_name=$2
+    local cmd=$3
+    local arch=$4
+    local filter=$5
+
+    echo "Checking $package_name..."
+
+    local latest_version=$(get_latest_version "$repo")
+    local installed_version=$(get_installed_version "$cmd")
+
+    echo "Installed version: $installed_version"
+    echo "Latest version: $latest_version"
+
+    if [ "$installed_version" = "Not installed" ] || version_gt "$latest_version" "$installed_version"; then
+        echo "Installing/upgrading $package_name..."
+
+        local release_info=$(curl -s "https://api.github.com/repos/$repo/releases/latest")
+        local latest_release_url=$(echo "$release_info" | grep -oP '"browser_download_url": "\K(.*)(?=")' | grep "$filter" | grep "$arch" | grep "deb" | head -n 1)
+
+        if [ -z "$latest_release_url" ]; then
+            echo "Error: Could not find a matching release for $package_name"
+            return 1
+        fi
+
+        echo "Download URL: $latest_release_url"
+
+        local deb_file="/tmp/$package_name.deb"
+        echo "Downloading to $deb_file..."
+        if ! curl -L -o "$deb_file" "$latest_release_url"; then
+            echo "Error: Failed to download $package_name"
+            return 1
+        fi
+
+        echo "Installing $package_name..."
+        if ! sudo dpkg -i "$deb_file"; then
+            echo "Error: Failed to install $package_name"
+            return 1
+        fi
+
+        echo "Cleaning up..."
+        rm -f "$deb_file"
+
+        echo "$package_name installed/upgraded successfully."
+    else
+        echo "$package_name is already up to date."
+    fi
+}
+
+ARCH=$(dpkg --print-architecture)
+echo "Detected system architecture: $ARCH"
+
+install_or_upgrade "BurntSushi/ripgrep" "ripgrep" "rg" "$ARCH" ""
+install_or_upgrade "sharkdp/bat" "bat" "bat" "$ARCH" "musl"
+install_or_upgrade "sharkdp/fd" "fd" "fd" "$ARCH" "musl"
+install_or_upgrade "charmbracelet/gum" "gum" "gum" "$ARCH" ""
+
+echo "All tools have been checked and updated if necessary."
