@@ -1,14 +1,13 @@
 #!/bin/bash
 
+# Exit immediately if a command exits with a non-zero status
 set -e
 set -u
 
-# Function to check if a package is installed
 is_installed() {
     dpkg -s "$1" >/dev/null 2>&1
 }
 
-# Function to install a package if it's not already installed
 install_if_needed() {
     local package=$1
     if is_installed "$package"; then
@@ -20,11 +19,9 @@ install_if_needed() {
     fi
 }
 
-# Update package lists
 echo "Updating package lists..."
 sudo apt-get update
 
-# Install packages
 {{- range .packages.apt }}
 install_if_needed "{{ . }}"
 {{- end }}

@@ -1,9 +1,12 @@
 #!/bin/bash
 
-# Source the execute_template function
-source {{ .chezmoi.sourceDir }}/scripts/execute_template.sh
+# Exit immediately if a command exits with a non-zero status
+set -e
+set -u
 
-# Install fzf.sh
+source {{ .chezmoi.sourceDir }}/scripts/common_functions.sh
+
+# Install fzf
 {{ .chezmoi.sourceDir }}/scripts/install_fzf.sh
 
 if [ "{{ .install_apt }}" = "true" ]; then

@@ -2,10 +2,12 @@
 
 # Exit immediately if a command exits with a non-zero status
 set -e
+set -u
 
 FZF_DIR="$HOME/.fzf"
 FZF_REPO="https://github.com/junegunn/fzf.git"
 
+# Get the latest version of fzf from the repository
 get_latest_version() {
     git ls-remote --tags --refs "$FZF_REPO" 2>/dev/null |
     cut -d/ -f3 |
@@ -40,4 +42,5 @@ install_or_update_fzf() {
     fi
 }
 
+# Call the install_or_update_fzf function
 install_or_update_fzf
