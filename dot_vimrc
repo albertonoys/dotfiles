@@ -1,0 +1,150 @@
+" Pick a leader key
+let mapleader = ","
+
+" Enable syntax for .page and .nopage templates
+au BufRead,BufNewFile *.page set syntax=html
+au BufRead,BufNewFile *.nopage set syntax=html
+
+" Enable syntax for config.schema.json
+au BufRead,BufNewFile *.js set syntax=json
+
+" Mapping for moving lines up and down with Ctrl + Arrow keys
+nnoremap <C-Down> :m .+1<CR>==
+nnoremap <C-Up> :m .-2<CR>==
+inoremap <C-Down> <Esc>:m .+1<CR>==gi
+inoremap <C-Up> <Esc>:m .-2<CR>==gi
+vnoremap <C-Down> :m '>+1<CR>gv=gv
+vnoremap <C-Up> :m '<-2<CR>gv=gv
+
+" Remap Ctrl + S.
+inoremap <C-s> <ESC>:w<CR>
+nnoremap <C-s> :w<CR>
+
+" Remap Ctrl + X
+inoremap <C-x> <ESC>:x<CR>
+nnoremap <C-x> :x<CR>
+
+" Remap Ctrl + L to toggle line numbers
+inoremap <C-l> <ESC>:set relativenumber!<CR>:set number!<CR>i
+nnoremap <C-l> :set relativenumber!<CR>:set number!<CR>
+
+" Snippets for pLogs
+nnoremap <leader>twig o<TAB>{{ pLog(, '') }}<ESC>7hi
+nnoremap <leader>php o<TAB>pLog(, '');<ESC>5hi
+nnoremap <leader>cons o<TAB>{{ pLogConsole(, '') }}<ESC>7hi
+
+
+" Be smart when using tabs ;)
+set smarttab
+"
+
+" Don't try to be vi compatible
+set nocompatible
+
+" Get off my lawn - helpful when learning Vim :)
+" nnoremap <Left> :echoe "Use h"<CR>
+" nnoremap <Right> :echoe "Use l"<CR>
+" nnoremap <Up> :echoe "Use k"<CR>
+" nnoremap <Down> :echo "Use j"<CR>
+
+set timeoutlen=1000 ttimeoutlen=0     " Remove timeout when hitting escape
+
+" Tab autocompletes in command mode
+set wildmenu
+
+" Helps force plugins to load correctly when it is turned back on below
+filetype plugin on
+
+" TODO: Load plugins here (pathogen or vundle)
+
+" Turn on syntax highlighting
+syntax enable
+
+" For plugins to load correctly
+filetype plugin indent on
+
+
+" Security
+set modelines=0
+
+" https://jeffkreeftmeijer.com/vim-number/
+" Show line numbers
+set number relativenumber
+set nu rnu
+
+" Show file stats
+set ruler
+
+" Blink cursor on error instead of beeping (grr)
+set visualbell
+
+" Encoding
+set encoding=utf-8
+
+" Whitespace
+set nowrap
+set textwidth=500
+set formatoptions=tcqrn1
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set noshiftround
+
+" Cursor motion
+set scrolloff=3
+set backspace=indent,eol,start
+set matchpairs+=<:> " use % to jump between pairs
+runtime! macros/matchit.vim
+
+" Move up/down editor lines
+nnoremap j gj
+nnoremap k gk
+
+" Allow hidden buffers
+set hidden
+
+" Rendering
+set ttyfast
+
+" Status bar
+set laststatus=2
+
+" Last line
+set showmode
+set showcmd
+
+" Searching
+nnoremap / /\v
+vnoremap / /\v
+
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set showmatch
+map <leader><space> :let @/=''<cr> " clear search
+
+" Remap help key.
+inoremap <F1> <ESC>:set invfullscreen<CR>a
+nnoremap <F1> :set invfullscreen<CR>
+vnoremap <F1> :set invfullscreen<CR>
+
+" Formatting
+map <leader>f gqip
+
+" Visualize tabs and newlines
+set listchars=tab:▸\ ,eol:¬
+" Uncomment this to enable by default:
+" set list " To enable by default
+" Or use your leader key + l to toggle on/off
+map <leader>l :set list!<CR> " Toggle tabs and EOL
+
+" Color scheme (terminal)
+set t_Co=256
+set background=dark
+let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+" put https://raw.github.com/altercation/vim-colors-solarized/master/colors/solarized.vim
+" in ~/.vim/colors/ and uncomment:
+" colorscheme solarized
