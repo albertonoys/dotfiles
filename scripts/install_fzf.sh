@@ -24,8 +24,12 @@ get_installed_version() {
 }
 
 install_or_update_fzf() {
-    local latest_version=$(get_latest_version)
-    local installed_version=$(get_installed_version)
+    local latest_version
+    local installed_version
+
+    latest_version=$(get_latest_version)
+    installed_version=$(get_installed_version)
+
 
     if [ "$installed_version" = "Not installed" ]; then
         echo "Installing fzf..."

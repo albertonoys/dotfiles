@@ -1,8 +1,10 @@
 #!/bin/bash
 
 execute_template() {
+    local chezmoi_source_dir
+
     local template_name="$1.tmpl"
-    local chezmoi_source_dir=$(chezmoi source-path)
+    chezmoi_source_dir=$(chezmoi source-path)
     local template_path="$chezmoi_source_dir/.chezmoitemplates/$template_name"
 
     if [ ! -f "$template_path" ]; then
