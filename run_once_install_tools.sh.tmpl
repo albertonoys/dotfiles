@@ -6,15 +6,15 @@ set -u
 
 source {{ .chezmoi.sourceDir }}/scripts/common_functions.sh
 
-# Install fzf
-{{ .chezmoi.sourceDir }}/scripts/install_fzf.sh
+if [ "{{ .install_dpkg }}" = "true" ]; then
+    execute_template install_dpkg_tools.sh
+fi
 
 if [ "{{ .install_apt }}" = "true" ]; then
     execute_template install_apt_tools.sh
 fi
 
-if [ "{{ .install_dpkg }}" = "true" ]; then
-    execute_template install_dpkg_tools.sh
-fi
+# Install fzf
+{{ .chezmoi.sourceDir }}/scripts/install_fzf.sh
 
 echo "All tools have been checked and installed if necessary."
