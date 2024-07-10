@@ -1,7 +1,9 @@
+{{- $email := promptStringOnce . "email" "Email address" -}}
+
 encryption = "age"
 
 [data]
-    email        = "albertonoys@gmail.com"
+    email        = {{ $email | quote }}
     install_apt  = true
     install_dpkg = true
 
