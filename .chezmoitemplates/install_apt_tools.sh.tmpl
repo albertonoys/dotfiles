@@ -23,5 +23,5 @@ echo "Updating package lists..."
 sudo apt-get update
 
 {{- range .packages.apt }}
-install_if_needed "{{ . }}"
+    install_if_needed "{{ . }}"
 {{- end }}
