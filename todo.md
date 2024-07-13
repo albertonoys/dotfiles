@@ -5,6 +5,7 @@
 
 ## Confs
 - [ ] Tilix
+- [ ] gnome-extensions
 ## Install 
 - [ ] ts-tool
 - [ ] ncdu
@@ -19,6 +20,7 @@
 		- [ ] ilancosman/tide@v6
 		- [ ] patrickf1/fzf.fish
 - [ ] Tilix
+- [ ] nvm
 
 ## Other
 
