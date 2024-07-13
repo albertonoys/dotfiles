@@ -1,0 +1,22 @@
+packages:
+  dpkg:
+    - cmd: gum
+      filter: ""
+      name: gum
+      repo: charmbracelet/gum
+    - cmd: rg
+      filter: ""
+      name: ripgrep
+      repo: BurntSushi/ripgrep
+    - cmd: bat
+      filter: musl
+      name: bat
+      repo: sharkdp/bat
+    - cmd: fd
+      filter: musl
+      name: fd
+      repo: sharkdp/fd
+  apt:
+    - "pv"
+    - tldr
+    - git-gui

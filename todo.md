@@ -9,3 +9,4 @@
 - [ ] Add atuin
 - [ ] Separate host/sandboxes
 - [ ] Add fish
+- [ ] Add lazygit
