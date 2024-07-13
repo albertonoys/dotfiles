@@ -9,7 +9,6 @@ user_config:
   packages:
     apt:
       - fish
-      - gh
       - git-gui
 
     dpkg:
@@ -35,6 +34,7 @@ user_config:
 
     snap:
       - btop
+      - gh
 
     fisher:
       - edc/bass

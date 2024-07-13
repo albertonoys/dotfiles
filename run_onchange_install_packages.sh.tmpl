@@ -24,7 +24,7 @@ if [ "{{ .user_config.install.dpkg }}" = "true" ]; then
     execute_template install_dpkg_packages.sh
 fi
 
-if [ "{{ .user_config.install.dpkg }}" = "true" ]; then
+if [ "{{ .user_config.install.apt }}" = "true" ]; then
     execute_template install_apt_packages.sh
 fi
 
