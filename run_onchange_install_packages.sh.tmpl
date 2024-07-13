@@ -4,7 +4,21 @@
 set -e
 set -u
 
-source {{ .chezmoi.sourceDir }}/scripts/common_functions.sh
+execute_template() {
+    local chezmoi_source_dir
+
+    local template_name="$1.tmpl"
+    chezmoi_source_dir=$({{ .chezmoi.executable }} source-path)
+    local template_path="$chezmoi_source_dir/.chezmoitemplates/$template_name"
+
+    if [ ! -f "$template_path" ]; then
+        echo "Error: Template file $template_name not found in .chezmoitemplates directory."
+        return 1
+    fi
+
+    # Execute the template content as an inline template
+    {{ .chezmoi.executable }} execute-template < "$template_path" | bash
+}
 
 if [ "{{ .user_config.install.dpkg }}" = "true" ]; then
     execute_template install_dpkg_packages.sh
