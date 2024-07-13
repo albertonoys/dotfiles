@@ -13,7 +13,7 @@
 - [x] btop
 - [ ] nvim
 - [ ] atuin
-- [ ] fish
+- [x] fish
 	- [ ] fisher
 		- [ ] jorgebucaran/fisher
 		- [ ] edc/bass
