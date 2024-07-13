@@ -2,10 +2,13 @@
 - [ ] Separate host/sandboxes/full
 - [ ] Add atuin key
 
-## Install 
+## Confs
+
 - [ ] Tilix
+## Install 
+
 - [ ] lazygit
-- [ ] btop
+- [x] btop
 - [ ] nvim
 - [ ] atuin
 - [ ] fish
@@ -14,11 +17,12 @@
 		- [ ] edc/bass
 		- [ ] ilancosman/tide@v6
 		- [ ] patrickf1/fzf.fish
-
+- [ ] Tilix
 
 ## Other
 
 - [ ] Configure fingerprint for terminal
 - [ ] Look into nix (https://search.nixos.org/packages?channel=unstable&show=tlrc)
 - [ ] Install tlrc instead
+- [ ] Add fish completions for tools
 - [ ] 
