@@ -3,12 +3,12 @@ chezmoi:
     edit:
       command: 'nvim'
       apply: true
-
     git:
       autocommit: true
       autopush: true
-
     diff:
       pager: 'bat --language=diff'
-
     pager: 'bat'
+    age:
+      useBuiltin: true
+    useBuiltinAge: true
