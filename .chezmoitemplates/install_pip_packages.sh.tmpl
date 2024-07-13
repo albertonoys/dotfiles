@@ -19,6 +19,6 @@ install_if_needed() {
     fi
 }
 
-{{- range .packages.pip }}
+{{- range .user_config.packages.pip }}
     install_if_needed "{{ . }}"
 {{- end }}

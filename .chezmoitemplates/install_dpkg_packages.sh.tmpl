@@ -96,7 +96,7 @@ install_or_upgrade() {
 ARCH=$(dpkg --print-architecture)
 # echo "Detected system architecture: $ARCH"
 
-{{ range $package := .packages.dpkg }}
+{{ range $package := .user_config.packages.dpkg }}
     {{ with $package }}
         install_or_upgrade "{{ .repo }}" "{{ .name }}" "{{ .cmd }}" "$ARCH" "{{ .filter }}"
     {{ end }}

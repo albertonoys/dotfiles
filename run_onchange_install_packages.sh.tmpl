@@ -6,16 +6,20 @@ set -u
 
 source {{ .chezmoi.sourceDir }}/scripts/common_functions.sh
 
-if [ "{{ .install_dpkg }}" = "true" ]; then
+if [ "{{ .user_config.install.dpkg }}" = "true" ]; then
     execute_template install_dpkg_packages.sh
 fi
 
-if [ "{{ .install_apt }}" = "true" ]; then
+if [ "{{ .user_config.install.dpkg }}" = "true" ]; then
     execute_template install_apt_packages.sh
 fi
 
-if [ "{{ .install_pip }}" = "true" ]; then
+if [ "{{ .user_config.install.pip }}" = "true" ]; then
     execute_template install_pip_packages.sh
+fi
+
+if [ "{{ .user_config.install.fisher }}" = "true" ]; then
+    # execute_template install_fisher_packages.sh
 fi
 
 # Install fzf

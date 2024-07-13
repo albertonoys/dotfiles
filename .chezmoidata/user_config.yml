@@ -1,0 +1,39 @@
+user_config:
+  install:
+    apt: true
+    dpkg: true
+    pip: true
+    fisher: true
+
+  packages:
+    apt:
+      - fish
+      - btop
+      - gh
+      - git-gui
+
+    dpkg:
+      - cmd: gum
+        filter: ""
+        name: gum
+        repo: charmbracelet/gum
+      - cmd: rg
+        filter: ""
+        name: ripgrep
+        repo: BurntSushi/ripgrep
+      - cmd: bat
+        filter: musl
+        name: bat
+        repo: sharkdp/bat
+      - cmd: fd
+        filter: musl
+        name: fd
+        repo: sharkdp/fd
+
+    pip:
+      - tldr
+
+    fisher:
+      - edc/bass
+      - ilancosman/tide@v6
+      - patrickf1/fzf.fish
