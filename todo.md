@@ -1,12 +1,22 @@
-- [ ] Add fish
-  - [ ] Install fisher
-  - [ ] Install fisher plugins
-     - [ ] jorgebucaran/fisher
-     - [ ] edc/bass
-     - [ ] ilancosman/tide@v6
-     - [ ] patrickf1/fzf.fish
-  - [ ] Add config for fisher plugins
 - [ ] Link externally modified configs
-- [ ] Add atuin
-- [ ] Separate host/sandboxes
-- [ ] Add lazygit
+- [ ] Separate host/sandboxes/full
+- [ ] Add atuin key
+
+## Install 
+- [ ] Tilix
+- [ ] lazygit
+- [ ] btop
+- [ ] nvim
+- [ ] atuin
+- [ ] fish
+	- [ ] fisher
+		- [ ] jorgebucaran/fisher
+		- [ ] edc/bass
+		- [ ] ilancosman/tide@v6
+		- [ ] patrickf1/fzf.fish
+
+
+## Other
+
+- [ ] Configure fingerprint for terminal
+- [ ] Look into nix (https://search.nixos.org/packages?channel=unstable&show=tlrc)
