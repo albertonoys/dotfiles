@@ -22,7 +22,12 @@ install_if_needed() {
 echo "Adding fish ppa..."
 sudo apt-add-repository ppa:fish-shell/release-3 >/dev/null 2>&1
 echo "Updating package lists..."
-sudo apt-get update >/dev/null 2>&1
+sudo apt -qq update
+
+if [ "{{ .user_config.apt_upgrade }}" = "true" ]; then
+    echo "Upgrading packages..."
+    sudo apt upgrade -yqq
+fi
 
 {{- range .user_config.packages.apt }}
     install_if_needed "{{ . }}"

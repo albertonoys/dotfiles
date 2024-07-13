@@ -1,4 +1,5 @@
 user_config:
+  apt_upgrade: true
   install:
     apt: true
     dpkg: true
