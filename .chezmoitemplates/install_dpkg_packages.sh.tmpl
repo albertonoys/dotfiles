@@ -60,7 +60,9 @@ install_or_upgrade() {
         echo "Installing/upgrading $package_name..."
 
         local release_info=$(curl -s "https://api.github.com/repos/$repo/releases/latest")
+        # echo $release_info
         local latest_release_url=$(echo "$release_info" | grep -oP '"browser_download_url": "\K(.*)(?=")' | grep "$filter" | grep "$arch" | grep "deb" | head -n 1)
+        echo $latest_release_url
 
         if [ -z "$latest_release_url" ]; then
             echo "Error: Could not find a matching release for $package_name"

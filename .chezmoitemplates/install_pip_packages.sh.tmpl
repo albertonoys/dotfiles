@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Exit immediately if a command exits with a non-zero status
+set -e
+set -u
+
+is_installed() {
+    pip3 show "$1" >/dev/null 2>&1
+}
+
+install_if_needed() {
+    local package=$1
+    if is_installed "$package"; then
+        echo "$package is already installed."
+    else
+        echo "Installing $package..."
+        pip3 install --user "$package"
+        echo "$package has been installed successfully."
+    fi
+}
+
+{{- range .packages.pip }}
+    install_if_needed "{{ . }}"
+{{- end }}

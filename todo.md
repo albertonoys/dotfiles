@@ -20,3 +20,5 @@
 
 - [ ] Configure fingerprint for terminal
 - [ ] Look into nix (https://search.nixos.org/packages?channel=unstable&show=tlrc)
+- [ ] Install tlrc instead
+- [ ] 

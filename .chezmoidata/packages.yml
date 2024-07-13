@@ -1,7 +1,6 @@
 packages:
   apt:
     - btop
-    - tldr
   pip:
     - tldr
   dpkg:
@@ -21,7 +20,3 @@ packages:
       filter: musl
       name: fd
       repo: sharkdp/fd
-    - cmd: tlrc
-      filter: musl
-      name: tlrc
-      repo: tldr-pages/tlrc
