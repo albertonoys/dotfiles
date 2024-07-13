@@ -9,6 +9,3 @@ chezmoi:
     diff:
       pager: 'bat --language=diff'
     pager: 'bat'
-    age:
-      useBuiltin: true
-    useBuiltinAge: true
