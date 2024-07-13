@@ -18,9 +18,9 @@ if [ "{{ .user_config.install.pip }}" = "true" ]; then
     execute_template install_pip_packages.sh
 fi
 
-if [ "{{ .user_config.install.fisher }}" = "true" ]; then
-    # execute_template install_fisher_packages.sh
-fi
+# if [ "{{ .user_config.install.fisher }}" = "true" ]; then
+#      execute_template install_fisher_packages.sh
+# fi
 
 # Install fzf
 {{ .chezmoi.sourceDir }}/scripts/install_fzf.sh
