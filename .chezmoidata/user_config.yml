@@ -4,11 +4,11 @@ user_config:
     dpkg: true
     pip: true
     fisher: true
+    snap: true
 
   packages:
     apt:
       - fish
-      - btop
       - gh
       - git-gui
 
@@ -32,6 +32,9 @@ user_config:
 
     pip:
       - tldr
+
+    snap:
+      - btop
 
     fisher:
       - edc/bass
