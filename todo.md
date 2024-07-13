@@ -1,12 +1,13 @@
+## Misc
 - [ ] Link externally modified configs
 - [ ] Separate host/sandboxes/full
 - [ ] Add atuin key
 
 ## Confs
-
 - [ ] Tilix
 ## Install 
-
+- [ ] ts-tool
+- [ ] ncdu
 - [ ] lazygit
 - [x] btop
 - [ ] nvim

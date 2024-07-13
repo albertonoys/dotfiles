@@ -2,8 +2,8 @@ packages:
   apt:
     - btop
     - gh
-  pip:
-    - tldr
+    - git-gui
+
   dpkg:
     - cmd: gum
       filter: ""
@@ -21,3 +21,6 @@ packages:
       filter: musl
       name: fd
       repo: sharkdp/fd
+
+  pip:
+    - tldr
