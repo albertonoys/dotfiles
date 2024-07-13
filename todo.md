@@ -1,12 +1,12 @@
-- [ ] Install fisher
-- [ ] Install fisher plugins
-   - [ ] jorgebucaran/fisher
-   - [ ] edc/bass
-   - [ ] ilancosman/tide@v6
-   - [ ] patrickf1/fzf.fish
-- [ ] Add config for fisher plugins
+- [ ] Add fish
+  - [ ] Install fisher
+  - [ ] Install fisher plugins
+     - [ ] jorgebucaran/fisher
+     - [ ] edc/bass
+     - [ ] ilancosman/tide@v6
+     - [ ] patrickf1/fzf.fish
+  - [ ] Add config for fisher plugins
 - [ ] Link externally modified configs
 - [ ] Add atuin
 - [ ] Separate host/sandboxes
-- [ ] Add fish
 - [ ] Add lazygit
