@@ -2,13 +2,14 @@
 source ~/.config/fish/aliases.fish
 source ~/.config/fish/colors.fish
 
-# Environment-specific configuration
-{{- if eq .environment "host" }}
-source ~/.config/fish/host/aliases.fish
-{{- else if eq .environment "sbx" }}
-source ~/.config/fish/sbx/aliases.fish
-source ~/.config/fish/sbx/config.fish
-{{- end }}
+# Source all files in the environment-specific directory
+set -l env_dir ~/.config/fish/environment/{{ .environment }}
+if test -d $env_dir
+    for file in $env_dir/**/*.fish
+        # source $file
+        echo $file
+    end
+end
 
 # Disable greeting
 set fish_greeting
