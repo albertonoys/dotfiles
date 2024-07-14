@@ -6,8 +6,10 @@
 ## Confs
 - [ ] Tilix
 - [ ] gnome-extensions
-## Install
+## Install 
 - [ ] ts-tool
+- [ ] eza
+- [ ] zoxide
 - [ ] ncdu
 - [ ] lazygit
 - [x] btop
@@ -21,11 +23,11 @@
 		- [ ] patrickf1/fzf.fish
 - [ ] Tilix
 - [ ] nvm
-
+- [ ] snaps
 ## Other
 
 - [ ] Configure fingerprint for terminal
 - [ ] Look into nix (https://search.nixos.org/packages?channel=unstable&show=tlrc)
 - [ ] Install tlrc instead
 - [ ] Add fish completions for tools
-- [ ] Check is fish ppa is already added
+- [ ] 

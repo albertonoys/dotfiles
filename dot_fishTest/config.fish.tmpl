@@ -1,0 +1,62 @@
+# General fish configuration
+source ~/.config/fish/aliases.fish
+source ~/.config/fish/colors.fish
+
+# Environment-specific configuration
+{{- if eq .environment "host" }}
+source ~/.config/fish/host/aliases.fish
+{{- else if eq .environment "sbx" }}
+source ~/.config/fish/sbx/aliases.fish
+source ~/.config/fish/sbx/config.fish
+{{- end }}
+
+# Disable greeting
+set fish_greeting
+
+if not set -q __dotfiles_PATH
+	set -g __dotfiles_PATH (realpath ~/dotfiles)
+end
+
+# Add packages to path
+if test -e $HOME/.atuin/bin
+    fish_add_path -g $HOME/.atuin/bin
+end
+
+if test -e /opt/nvim-linux64/bin
+    fish_add_path -g /opt/nvim-linux64/bin
+end
+
+# Set default editor
+if type -q nvim
+    set -gx EDITOR nvim
+else
+    set -gx EDITOR vim
+end
+
+function fish_user_key_bindings
+	bind ! bind_bang
+    bind '$' bind_dollar
+end
+
+# Source package completions
+if status --is-interactive
+    run_if_installed fzf "fzf --fish | source"
+    run_if_installed atuin "atuin init fish | source"
+    run_if_installed zoxide "zoxide init fish | source"
+    run_if_installed fzf "fzf --fish | source"
+    run_if_installed load_nvm "load_nvm > /dev/stderr"
+end
+
+function run_if_installed
+    if test (count $argv) -lt 2
+        echo "Usage: run_if_installed PACKAGE_NAME COMMAND [ARGUMENTS...]"
+        return 1
+    end
+
+    set -l package $argv[1]
+    set -l command $argv[2..-1]
+
+    if type -q $package
+        eval $command
+    end
+end
