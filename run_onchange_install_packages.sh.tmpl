@@ -4,6 +4,10 @@
 set -e
 set -u
 
+is_installed() {
+    dpkg -s "$1" >/dev/null 2>&1
+}
+
 execute_template() {
     local chezmoi_source_dir
 
