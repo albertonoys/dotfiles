@@ -23,6 +23,6 @@ end
 ensure_fisher_installed
 
 # Install each plugin if not already installed
-{{- range .user_config.install.fisher }}
+{{- range .user_config.packages.fisher }}
     install_if_needed "{{ . }}"
 {{- end }}
