@@ -51,6 +51,6 @@ else
 end
 
 # Check fisher
-if {{ .user_config.install.fisher }} && not functions -q fisher
-    curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
-end
+# if {{ .user_config.install.fisher }} && not test -e "$__dotfiles_FISH_CONF_PATH/functions/fisher.fish"
+#     curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+# end
