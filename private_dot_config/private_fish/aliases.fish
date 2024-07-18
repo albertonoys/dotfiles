@@ -25,18 +25,18 @@ abbr gg 'git gui &'
 abbr dotfilesUpdate 'dot && git pull && sudo ./bootstrap.sh && rld'
 
 # Package aliases
-if type -q eza
+if is_installed eza
 	alias ll='eza --long --group --header --all --group-directories-first --icons=auto'
 	alias tree='eza --tree --all --icons=auto'
 	alias ls='eza --icons=auto'
 end
 
-if type -q nvim
+if is_installed nvim
     abbr vim 'nvim'
     alias v='nvim'
 end
 
-if type -q chezmoi
+if is_installed chezmoi
     abbr cm 'chezmoi'
     abbr cz 'chezmoi'
 end

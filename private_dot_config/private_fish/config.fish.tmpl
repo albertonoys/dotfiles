@@ -18,15 +18,10 @@ if test -d $env_dir
 end
 
 # Add packages to path
-if test -e $HOME/.atuin/bin
-    fish_add_path -g $HOME/.atuin/bin
-end
+add_to_path_if_exists $HOME/.atuin/bin
+add_to_path_if_exists /opt/nvim-linux64/bin
 
-if test -e /opt/nvim-linux64/bin
-    fish_add_path -g /opt/nvim-linux64/bin
-end
-
-if test -e $HOME/.bun
+if dir_exists $HOME/.bun
     set --export BUN_INSTALL "$HOME/.bun"
     set --export PATH $BUN_INSTALL/bin $PATH
 end
@@ -34,20 +29,6 @@ end
 function fish_user_key_bindings
     bind ! bind_bang
     bind '$' bind_dollar
-end
-
-function run_if_installed
-    if test (count $argv) -lt 2
-        echo "Usage: run_if_installed PACKAGE_NAME COMMAND [ARGUMENTS...]"
-        return 1
-    end
-
-    set -l package $argv[1]
-    set -l command $argv[2..-1]
-
-    if type -q $package
-        eval $command
-    end
 end
 
 # Source package completions
@@ -63,7 +44,7 @@ end
 set fish_greeting
 
 # Set default editor
-if type -q nvim
+if is_installed nvim
     set -gx EDITOR nvim
 else
     set -gx EDITOR vim

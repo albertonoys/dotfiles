@@ -48,7 +48,7 @@ alias configGet='iatsOptionGet'
 alias sonar='sqr run iats (git branch --show-current) > /dev/null'
 
 # If ts-tool is installed
-if type -q ts
+if is_installed ts
     abbr ips 'ts push'
     abbr ipss 'ts push --sonar-force'
     abbr ipsf 'ts push --fix'
