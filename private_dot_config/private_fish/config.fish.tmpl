@@ -51,6 +51,6 @@ else
 end
 
 # Check fisher plugins
-if {{ .user_config.install.fisher }} 
-    source "$__dotfiles_FISH_CONF_PATH/functions/check_fisher_plugins.fish"
+if {{ .user_config.install.fisher }}
+    fisher update
 end
