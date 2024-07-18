@@ -1,0 +1,28 @@
+#!/usr/bin/env fish
+
+# Function to install Fisher if not already installed
+function ensure_fisher_installed
+    if not functions -q fisher
+        echo "Installing Fisher..."
+        curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+    end
+end
+
+# Function to install a plugin if not already installed
+function install_if_needed
+    set -l plugin $argv[1]
+    if not fisher list | grep -q $plugin
+        echo "Installing $plugin..."
+        fisher install $plugin
+    else
+        echo "$plugin is already installed."
+    end
+end
+
+# Ensure Fisher is installed
+ensure_fisher_installed
+
+# Install each plugin if not already installed
+{{- range .user_config.install.fisher }}
+    install_if_needed "{{ . }}"
+{{- end }}
