@@ -17,10 +17,10 @@
 - [ ] atuin
 - [x] fish
 	- [ ] fisher
-		- [ ] jorgebucaran/fisher
-		- [ ] edc/bass
+		- [x] jorgebucaran/fisher
+		- [x] edc/bass
 		- [ ] ilancosman/tide@v6
-		- [ ] patrickf1/fzf.fish
+		- [x] patrickf1/fzf.fish
 - [ ] Tilix
 - [ ] nvm
 - [ ] snaps

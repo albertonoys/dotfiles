@@ -4,7 +4,7 @@ user_config:
     apt: true
     dpkg: true
     pip: true
-    fisher: false
+    fisher: true
     snap: true
 
   packages:
