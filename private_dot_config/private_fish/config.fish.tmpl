@@ -50,7 +50,18 @@ else
     set -gx EDITOR vim
 end
 
-# Check fisher
-# if {{ .user_config.install.fisher }} && not test -e "$__dotfiles_FISH_CONF_PATH/functions/fisher.fish"
-#     curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
-# end
+# Check Fisher and plugins
+if not set -q __dotfiles_FISHER_INSTALLED
+    # Set the flag to indicate Fisher has been installed
+    set -Ux __dotfiles_FISHER_INSTALLED true
+
+    echo "Installing Fisher..."
+
+    # Install Fisher
+    curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
+    fisher install jorgebucaran/fisher
+
+    {{- range .user_config.packages.fisher }}
+    fisher install "{{ . }}"
+    {{- end }}
+end
