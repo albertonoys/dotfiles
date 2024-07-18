@@ -14,8 +14,6 @@ function install_if_needed
     if not fisher list | grep -q $plugin
         echo "Installing $plugin..."
         fisher install $plugin
-    else
-        echo "$plugin is already installed."
     end
 end
 

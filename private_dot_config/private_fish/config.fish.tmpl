@@ -1,24 +1,24 @@
-set -g __dotfiles_FISH_CONF_PATH $HOME/.config/fish
+set -g __dotfiles_FISH_CONF_PATH "$HOME/.config/fish"
 
 # General fish configuration
-source $__dotfiles_FISH_CONF_PATH/utils.fish
-source $__dotfiles_FISH_CONF_PATH/aliases.fish
-source $__dotfiles_FISH_CONF_PATH/colors.fish
+source "$__dotfiles_FISH_CONF_PATH/utils.fish"
+source "$__dotfiles_FISH_CONF_PATH/aliases.fish"
+source "$__dotfiles_FISH_CONF_PATH/colors.fish"
 
 # Set environment variables and path
-set -gx __dotfiles_PATH {{ .chezmoi.sourceDir }}
+set -gx __dotfiles_PATH "{{ .chezmoi.sourceDir }}"
 set -gx __dotfiles_HOST_TYPE {{ .hosttype }}
 
 # Source all files in the environment-specific directory
-set -l env_dir $__dotfiles_FISH_CONF_PATH/environment/{{ .hosttype }}
+set -l env_dir "$__dotfiles_FISH_CONF_PATH/environment/{{ .hosttype }}"
 if test -d $env_dir
     for file in $env_dir/**/*.fish
-        source $file
+        source "$file"
     end
 end
 
 # Add packages to path
-add_to_path_if_exists $HOME/.atuin/bin
+add_to_path_if_exists "$HOME/.atuin/bin"
 add_to_path_if_exists /opt/nvim-linux64/bin
 
 if dir_exists $HOME/.bun
@@ -48,4 +48,9 @@ if is_installed nvim
     set -gx EDITOR nvim
 else
     set -gx EDITOR vim
+end
+
+# Check fisher plugins
+if {{ .user_config.install.fisher }} 
+    source "$__dotfiles_FISH_CONF_PATH/functions/check_fisher_plugins.fish"
 end

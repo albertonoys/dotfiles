@@ -24,3 +24,7 @@ function run_if_installed
         eval $command
     end
 end
+
+function check_fisher_plugin
+    command ...
+end

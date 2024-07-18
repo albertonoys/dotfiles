@@ -36,15 +36,11 @@ if [ "{{ .user_config.install.pip }}" = "true" ]; then
     execute_template install_pip_packages.sh
 fi
 
-if [ "{{ .user_config.install.fisher }}" = "true" ]; then
-     execute_template install_fisher_packages.fish
-fi
-
 # Install fzf
 {{ .chezmoi.sourceDir }}/scripts/install_fzf.sh
 
 # Change shell to fish
-if is_installed fish&& [ "$SHELL" != "$(which fish)" ]; then
+if is_installed fish && [ "$SHELL" != "$(which fish)" ]; then
     echo "Changing default shell to fish..."
     chsh -s $(which fish)
 fi
