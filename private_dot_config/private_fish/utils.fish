@@ -1,4 +1,3 @@
-# Utility function to check if a command is installed
 function is_installed
     type -q $argv[1]
 end
@@ -15,7 +14,6 @@ end
 
 function run_if_installed
     if test (count $argv) -lt 2
-        echo "Usage: run_if_installed PACKAGE_NAME COMMAND [ARGUMENTS...]"
         return 1
     end
 
