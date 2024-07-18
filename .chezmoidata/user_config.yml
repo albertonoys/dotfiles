@@ -38,6 +38,7 @@ user_config:
       - gh
 
     fisher:
+      - jorgebucaran/fisher
       - edc/bass
       - ilancosman/tide@v6
-      - patrickf1/fzf.fish
+      # - patrickf1/fzf.fish
