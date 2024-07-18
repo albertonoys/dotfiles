@@ -1,0 +1,13 @@
+complete --no-files -c ir
+complete -c ir -r -a 'base' -d 'portal_BasePortal'
+complete -c ir -r -a 'client' -d 'portal_ClientBasePortal'
+complete -c ir -r -a 'job' -d 'portal_BasePortalJobWizard'
+complete -c ir -r -a 'search' -d 'portal_BasePortalJobSearchWizard'
+complete -c ir -r -a 'jobapp' -d 'portal_BasePortalJobApprovalProcess'
+complete -c ir -r -a 'html' -d 'portal_HtmlCustomPortal'
+complete -c ir -r -a 'time' -d 'portal_TimeSlots'
+complete -c ir -r -a 'prod' -d 'db_Production'
+complete -c ir -r -a 'default' -d 'db_Default'
+complete -c ir -r -a 'dbempty' -d 'db_Empty'
+complete -c ir -r -a 'temp' -d 'portal_temp'
+complete -c ir -r -s h -l help -d 'Show help menu'
