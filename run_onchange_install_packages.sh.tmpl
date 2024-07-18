@@ -44,7 +44,7 @@ fi
 {{ .chezmoi.sourceDir }}/scripts/install_fzf.sh
 
 # Change shell to fish
-if is_installed fish
+if is_installed fish; then
     chsh -s (which fish)
 end
 
