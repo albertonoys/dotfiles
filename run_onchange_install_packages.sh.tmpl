@@ -39,4 +39,9 @@ fi
 # Install fzf
 {{ .chezmoi.sourceDir }}/scripts/install_fzf.sh
 
+# Change shell to fish
+if is_installed fish
+    chsh -s (which fish)
+end
+
 echo "All tools have been checked and installed if necessary."
