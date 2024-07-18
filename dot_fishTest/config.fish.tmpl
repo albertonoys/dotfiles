@@ -1,15 +1,14 @@
 set -g __dotfiles_FISH_CONF_PATH $HOME/.config/fish
 
 # General fish configuration
-source $$__dotfiles_FISH_CONF_PATH/aliases.fish
+source $__dotfiles_FISH_CONF_PATH/aliases.fish
 source $__dotfiles_FISH_CONF_PATH/colors.fish
 
 # Source all files in the environment-specific directory
 set -l env_dir $__dotfiles_FISH_CONF_PATH/environment/{{ .hosttype }}
 if test -d $env_dir
     for file in $env_dir/**/*.fish
-        # source $file
-        echo $file
+        source $file
     end
 end
 
