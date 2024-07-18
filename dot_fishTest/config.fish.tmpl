@@ -1,9 +1,11 @@
+set -g __dotfiles_FISH_CONF_PATH $HOME/.config/fish
+
 # General fish configuration
-source ~/.config/fish/aliases.fish
-source ~/.config/fish/colors.fish
+source $$__dotfiles_FISH_CONF_PATH/aliases.fish
+source $__dotfiles_FISH_CONF_PATH/colors.fish
 
 # Source all files in the environment-specific directory
-set -l env_dir ~/.config/fish/environment/{{ .environment }}
+set -l env_dir $__dotfiles_FISH_CONF_PATH/environment/{{ .hosttype }}
 if test -d $env_dir
     for file in $env_dir/**/*.fish
         # source $file
@@ -11,12 +13,9 @@ if test -d $env_dir
     end
 end
 
-# Disable greeting
-set fish_greeting
-
-if not set -q __dotfiles_PATH
-	set -g __dotfiles_PATH (realpath ~/dotfiles)
-end
+# Set environment variables and path
+set -gx __dotfiles_PATH {{ .chezmoi.sourceDir }}
+set -gx __dotfiles_HOST_TYPE {{ .hosttype }}
 
 # Add packages to path
 if test -e $HOME/.atuin/bin
@@ -27,25 +26,9 @@ if test -e /opt/nvim-linux64/bin
     fish_add_path -g /opt/nvim-linux64/bin
 end
 
-# Set default editor
-if type -q nvim
-    set -gx EDITOR nvim
-else
-    set -gx EDITOR vim
-end
-
 function fish_user_key_bindings
-	bind ! bind_bang
+    bind ! bind_bang
     bind '$' bind_dollar
-end
-
-# Source package completions
-if status --is-interactive
-    run_if_installed fzf "fzf --fish | source"
-    run_if_installed atuin "atuin init fish | source"
-    run_if_installed zoxide "zoxide init fish | source"
-    run_if_installed fzf "fzf --fish | source"
-    run_if_installed load_nvm "load_nvm > /dev/stderr"
 end
 
 function run_if_installed
@@ -60,4 +43,23 @@ function run_if_installed
     if type -q $package
         eval $command
     end
+end
+
+# Source package completions
+if status --is-interactive
+    run_if_installed fzf "fzf --fish | source"
+    run_if_installed atuin "atuin init fish | source"
+    run_if_installed zoxide "zoxide init fish | source"
+    run_if_installed fzf "fzf --fish | source"
+    run_if_installed load_nvm "load_nvm > /dev/stderr"
+end
+
+# Disable greeting
+set fish_greeting
+
+# Set default editor
+if type -q nvim
+    set -gx EDITOR nvim
+else
+    set -gx EDITOR vim
 end

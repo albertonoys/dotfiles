@@ -11,7 +11,7 @@ remove_aliases
 
 # Common aliases
 alias gc.='git checkout .'
-alias gd='git diff'
+alias gd='git diff | bat --language diff'
 alias fishConfig='vim ~/.config/fish/config.fish'
 alias dot='cd $__dotfiles_PATH'
 alias rld='source ~/.config/fish/config.fish'

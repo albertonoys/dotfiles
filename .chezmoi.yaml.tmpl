@@ -1,5 +1,18 @@
+{{- $hosttype := "desktop" -}}
+{{- if hasPrefix "sb-" .chezmoi.username -}}
+{{-   $hosttype = "sandbox" -}}
+{{- end -}}
+
+{{- $confirmChoices := list "yes" "no" -}}
+{{- $isCorrect := promptChoice (printf "Is this a %s environment" $hosttype) $confirmChoices "yes" -}}
+
+{{- if ne $isCorrect "yes" -}}
+{{-   $choices := list "desktop" "sandbox" -}}
+{{-   $hosttype = promptChoice "What type of host are you on" $choices -}}
+{{- end -}}
+
 data:
-    environment: {{ promptString "Enter environment (host/sbx)" }}
+  hosttype: {{ $hosttype | quote }}
 
 edit:
     command: "nvim"
@@ -13,3 +26,6 @@ diff:
     pager: "bat --language=diff"
 
 pager: "bat"
+format: yaml
+progress: true
+color:
