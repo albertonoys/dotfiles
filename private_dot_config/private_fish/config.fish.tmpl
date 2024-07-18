@@ -26,6 +26,11 @@ if test -e /opt/nvim-linux64/bin
     fish_add_path -g /opt/nvim-linux64/bin
 end
 
+if test -e $HOME/.bun
+    set --export BUN_INSTALL "$HOME/.bun"
+    set --export PATH $BUN_INSTALL/bin $PATH
+end
+
 function fish_user_key_bindings
     bind ! bind_bang
     bind '$' bind_dollar
@@ -47,7 +52,7 @@ end
 
 # Source package completions
 if status --is-interactive
-    run_if_installed fzf "fzf --fish | source"
+    # run_if_installed fzf "fzf --fish | source"
     run_if_installed atuin "atuin init fish | source"
     run_if_installed zoxide "zoxide init fish | source"
     run_if_installed fzf "fzf --fish | source"
