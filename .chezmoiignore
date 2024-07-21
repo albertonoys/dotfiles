@@ -7,3 +7,4 @@ todo.md
 gitleaks-baseline.json
 gitleaks-new.json
 symlinked
+.pre-commit-config.yaml
