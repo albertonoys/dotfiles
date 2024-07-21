@@ -20,5 +20,5 @@ symlinked
 {{- end }}
 
 {{- if ne .hosttype "sandbox" }}
-private_dot_config/private_fish/environment/sandbox
+.config/fish/environment/sandbox
 {{- end }}
