@@ -8,3 +8,14 @@ gitleaks-baseline.json
 gitleaks-new.json
 symlinked
 .pre-commit-config.yaml
+
+{{- if ne .hosttype "desktop" }}
+private_dot_config/flameshot
+private_dot_config/touchegg
+private_dot_config/zed
+private_dot_config/private_fish/environment/desktop
+{{- end }}
+
+{{- if ne .hosttype "sandbox" }}
+private_dot_config/private_fish/environment/sandbox
+{{- end }}
