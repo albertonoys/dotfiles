@@ -8,7 +8,7 @@ gitleaks-baseline.json
 gitleaks-new.json
 symlinked
 .pre-commit-config.yaml
-symlink_creator.fish
+create_link.fish
 
 {{- if ne .hosttype "desktop" }}
 .config/flameshot
