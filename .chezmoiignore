@@ -14,6 +14,9 @@ symlinked
 .config/touchegg
 .config/zed
 .config/fish/environment/desktop
+.config/fish/functions/tide*
+.config/fish/functions/_tide*
+
 {{- end }}
 
 {{- if ne .hosttype "sandbox" }}
