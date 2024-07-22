@@ -24,11 +24,3 @@ check_hosttype() {
         return 1
     fi
 }
-
-# You can add more utility functions here
-
-# Export functions if this script is being sourced
-if [[ "${BASH_SOURCE[0]}" != "${0}" ]]; then
-    export -f check_hosttype
-    # Export any other functions you add
-fi
