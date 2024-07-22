@@ -13,12 +13,6 @@ is_installed() {
 
 install_if_needed() {
     local package=$1
-    local hosttype=$2
-
-    # Check if the package should be installed on this host type
-    if ! check_hosttype "$package_name" "$hosttype"; then
-        return 0
-    fi
 
     if is_installed "$package"; then
         echo "$package is already installed."
