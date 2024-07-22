@@ -24,7 +24,7 @@
 		- [x] patrickf1/fzf.fish
 - [ ] Tilix
 - [ ] nvm
-- [x] snaps
+- [ ] snaps
 ## Other
 
 - [ ] Configure fingerprint for terminal
