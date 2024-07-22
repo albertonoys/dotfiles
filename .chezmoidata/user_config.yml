@@ -5,12 +5,14 @@ user_config:
     dpkg: true
     pip: true
     fisher: true
-    snap: true
+    snap: false
+    targz: true
 
   packages:
     apt:
       - fish
       - git-gui
+      - ncdu
 
     dpkg:
       - cmd: gum
@@ -41,4 +43,8 @@ user_config:
       - jorgebucaran/fisher
       - edc/bass
       - ilancosman/tide@v6
-      # - patrickf1/fzf.fish
+    targz:
+      - cmd: lazygit
+        filter: Linux
+        name: lazygit
+        repo: "jesseduffield/lazygit"

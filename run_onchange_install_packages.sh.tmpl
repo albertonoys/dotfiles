@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# user_config.yml hash: {{ include ".chezmoidata/user_config.yml" | sha256sum }}
+
 # Exit immediately if a command exits with a non-zero status
 set -e
 set -u
@@ -34,6 +36,14 @@ fi
 
 if [ "{{ .user_config.install.pip }}" = "true" ]; then
     execute_template install_pip_packages.sh
+fi
+
+if [ "{{ .user_config.install.snap }}" = "true" ]; then
+    execute_template install_snap_packages.sh
+fi
+
+if [ "{{ .user_config.install.targz }}" = "true" ]; then
+    execute_template install_targz_packages.sh
 fi
 
 # Install fzf

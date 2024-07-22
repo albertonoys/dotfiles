@@ -1,5 +1,5 @@
 ## Misc
-- [ ] Link externally modified configs
+- [x] Link externally modified configs
 - [ ] Separate host/sandboxes/full
 - [ ] Add atuin key
 
@@ -11,7 +11,7 @@
 - [ ] eza
 - [ ] zoxide
 - [ ] ncdu
-- [ ] lazygit
+- [x] lazygit
 - [x] btop
 - [ ] nvim
 - [ ] atuin
@@ -23,11 +23,11 @@
 		- [x] patrickf1/fzf.fish
 - [ ] Tilix
 - [ ] nvm
-- [ ] snaps
+- [x] snaps
 ## Other
 
 - [ ] Configure fingerprint for terminal
 - [ ] Look into nix (https://search.nixos.org/packages?channel=unstable&show=tlrc)
 - [ ] Install tlrc instead
 - [ ] Add fish completions for tools
-- [ ] 
+- [ ] WezTerm
