@@ -17,6 +17,7 @@ is_fish_repo_added() {
 
 install_if_needed() {
     local package=$1
+    local hosttype=$2
 
     # Check if the package should be installed on this host type
     if ! check_hosttype "$package_name" "$hosttype"; then
@@ -45,6 +46,8 @@ if [ "{{ .user_config.apt_upgrade }}" = "true" ]; then
     sudo apt upgrade -yqq
 fi
 
-{{- range .user_config.packages.apt }}
-    install_if_needed "{{ . }}"
-{{- end }}
+{{ range $package := .user_config.packages.apt }}
+    {{ with $package }}
+        install_if_needed "{{ .name }}" "{{ if hasKey . "hosttype" }}{{ .hosttype }}{{ else }}null{{ end }}"
+    {{ end }}
+{{ end }}
