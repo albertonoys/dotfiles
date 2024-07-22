@@ -8,7 +8,7 @@
 - [ ] gnome-extensions
 ## Install 
 - [ ] nvim
-- [ ] ts-tool
+- [x] ts-tool
 - [ ] eza
 - [ ] zoxide
 - [x] ncdu

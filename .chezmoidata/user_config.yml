@@ -47,6 +47,8 @@ user_config:
         hosttype: sandbox
       - name: gh
         hosttype: sandbox
+      - name: neovim
+        hosttype: sandbox
 
     fisher:
       - name: jorgebucaran/fisher
