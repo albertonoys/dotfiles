@@ -25,7 +25,7 @@ install_if_needed() {
 
 {{ range $package := .user_config.packages.snap }}
     {{ with $package}}
-        if check_hosttype "{{ .name }}" "{{ if hasKey . "hosttype" }}{{ .hosttype }}{{ else }}all{{ end }}"; then
+        if check_hosttype "{{ if hasKey . "hosttype" }}{{ .hosttype }}{{ else }}all{{ end }}"; then
             install_if_needed "{{ .name }}"
         fi
     {{ end }}

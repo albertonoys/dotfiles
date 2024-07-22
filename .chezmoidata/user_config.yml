@@ -14,6 +14,8 @@ user_config:
       - name: git-gui
       - name: ncdu
         hosttype: sandbox
+      - name: ts-tool
+        hosttype: sandbox
 
     dpkg:
       - name: gum

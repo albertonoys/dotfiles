@@ -100,7 +100,7 @@ ARCH=$(dpkg --print-architecture)
 
 {{ range $package := .user_config.packages.dpkg }}
     {{ with $package }}
-        if check_hosttype "{{ .name }}" "{{ if hasKey . "hosttype" }}{{ .hosttype }}{{ else }}all{{ end }}"; then
+        if check_hosttype "{{ if hasKey . "hosttype" }}{{ .hosttype }}{{ else }}all{{ end }}"; then
             install_or_upgrade "{{ .repo }}" "{{ .name }}" "{{ .cmd }}" "$ARCH" "{{ .filter }}"
         fi
     {{ end }}
