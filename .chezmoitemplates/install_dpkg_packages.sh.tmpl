@@ -52,7 +52,7 @@ install_or_upgrade() {
     local filter=$5
 
     # Check if the package should be installed on this host type
-    if ! check_hosttype "$package_name" "$hosttype" "{{ .hosttype }}"; then
+    if ! check_hosttype "$package_name" "$hosttype"; then
         return 0
     fi
 
