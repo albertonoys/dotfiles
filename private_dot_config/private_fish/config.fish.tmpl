@@ -21,9 +21,9 @@ end
 add_to_path_if_exists "$HOME/.atuin/bin"
 add_to_path_if_exists /opt/nvim-linux64/bin
 
-if dir_exists $HOME/.bun
+if dir_exists "$HOME/.bun"
     set --export BUN_INSTALL "$HOME/.bun"
-    set --export PATH $BUN_INSTALL/bin $PATH
+    fish_add_path $BUN_INSTALL/bin
 end
 
 function fish_user_key_bindings

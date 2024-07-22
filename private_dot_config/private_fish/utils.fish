@@ -3,12 +3,12 @@ function is_installed
 end
 
 function dir_exists
-    test -e $argv[1]
+    test -d $argv[1]
 end
 
 function add_to_path_if_exists
     if dir_exists $argv[1]
-        fish_add_path -g $arg[1]
+        fish_add_path $arg[1]
     end
 end
 
