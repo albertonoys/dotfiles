@@ -34,12 +34,6 @@ install_or_upgrade() {
     local cmd=$3
     local arch=$4
     local filter=$5
-    local hosttype=$6
-
-    # Check if the package should be installed on this host type
-    if ! check_hosttype "$package_name" "$hosttype"; then
-        return 0
-    fi
 
     echo "Checking $package_name..."
 
@@ -113,6 +107,8 @@ esac
 
 {{ range $package := .user_config.packages.targz }}
     {{ with $package }}
-        install_or_upgrade "{{ .repo }}" "{{ .name }}" "{{ .cmd }}" "$ARCH" "{{ .filter }}" "{{ if hasKey . "hosttype" }}{{ .hosttype }}{{ else }}null{{ end }}"
+        if check_hosttype "{{ .name }}" "{{ if hasKey . "hosttype" }}{{ .hosttype }}{{ else }}all{{ end }}"; then
+            install_or_upgrade "{{ .repo }}" "{{ .name }}" "{{ .cmd }}" "$ARCH" "{{ .filter }}"
+        fi
     {{ end }}
 {{ end }}

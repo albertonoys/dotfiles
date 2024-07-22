@@ -31,6 +31,8 @@ install_if_needed() {
 
 {{ range $package := .user_config.packages.pip }}
     {{ with $package}}
-        install_if_needed "{{ .name }}" "{{ if hasKey . "hosttype" }}{{ .hosttype }}{{ else }}null{{ end }}"
+        if check_hosttype "{{ .name }}" "{{ if hasKey . "hosttype" }}{{ .hosttype }}{{ else }}all{{ end }}"; then
+            install_if_needed "{{ .name }}"
+        fi
     {{ end }}
 {{ end }}

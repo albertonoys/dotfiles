@@ -8,19 +8,21 @@ check_hosttype() {
     local hosttype=$2
 
     # If hosttype is empty or not set, install on all environments
-    if [ -z "${hosttype}" ] || [ "${hosttype}" = "null" ]; then
-        echo "Would install $package_name on $CURRENT_HOSTTYPE environment (all environments)."
+    if [ -z "${hosttype}" ] || [ "${hosttype}" = "all" ]; then
+        echo "Installing $package_name on $CURRENT_HOSTTYPE environment (all environments)."
         return 0
     fi
 
     # Convert comma-separated string to array
     IFS=',' read -ra hosttype_array <<< "$hosttype"
 
-    if [[ " ${hosttype_array[@]} " =~ " $CURRENT_HOSTTYPE " ]]; then
-        echo "Would install $package_name on $CURRENT_HOSTTYPE environment."
-        return 0
-    else
-        echo "Skipping $package_name installation: not applicable for $CURRENT_HOSTTYPE environment."
-        return 1
-    fi
+    for ht in "${hosttype_array[@]}"; do
+        if [[ "$ht" == "$CURRENT_HOSTTYPE" ]]; then
+            echo "Installing $package_name on $CURRENT_HOSTTYPE environment."
+            return 0
+        fi
+    done
+
+    echo "Skipping $package_name installation: not applicable for $CURRENT_HOSTTYPE environment."
+    return 1
 }
