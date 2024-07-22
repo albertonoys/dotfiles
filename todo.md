@@ -7,13 +7,14 @@
 - [ ] Tilix
 - [ ] gnome-extensions
 ## Install 
+- [ ] nvim
 - [ ] ts-tool
 - [ ] eza
 - [ ] zoxide
-- [ ] ncdu
+- [x] ncdu
 - [x] lazygit
 - [x] btop
-- [ ] nvim
+
 - [ ] atuin
 - [x] fish
 	- [ ] fisher
@@ -31,3 +32,6 @@
 - [ ] Install tlrc instead
 - [ ] Add fish completions for tools
 - [ ] WezTerm
+- [ ] ntfy
+- [ ] Shellcheck
+- [ ] Separate atuin by hosttype

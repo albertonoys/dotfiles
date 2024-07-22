@@ -4,12 +4,21 @@
 set -e
 set -u
 
+# Source utils
+source {{ .chezmoi.sourceDir }}/scripts/utils.sh
+
 is_installed() {
     pip3 show "$1" >/dev/null 2>&1
 }
 
 install_if_needed() {
     local package=$1
+
+    # Check if the package should be installed on this host type
+    if ! check_hosttype "$package_name" "$hosttype" "{{ .hosttype }}"; then
+        return 0
+    fi
+
     if is_installed "$package"; then
         echo "$package is already installed."
     else

@@ -4,6 +4,9 @@
 set -e
 set -u
 
+# Source utils
+source {{ .chezmoi.sourceDir }}/scripts/utils.sh
+
 get_latest_version() {
     local repo=$1
     local release_info=$(curl -s "https://api.github.com/repos/$repo/releases/latest")
@@ -47,6 +50,11 @@ install_or_upgrade() {
     local cmd=$3
     local arch=$4
     local filter=$5
+
+    # Check if the package should be installed on this host type
+    if ! check_hosttype "$package_name" "$hosttype" "{{ .hosttype }}"; then
+        return 0
+    fi
 
     echo "Checking $package_name..."
 

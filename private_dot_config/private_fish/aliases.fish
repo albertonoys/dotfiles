@@ -21,8 +21,13 @@ alias ding='tput bel'
 abbr gp 'grep -rniI . -e ""'
 abbr su "sudo fish"
 abbr - 'cd -'
-abbr gg 'git gui &'
 abbr dotfilesUpdate 'dot && git pull && sudo ./bootstrap.sh && rld'
+
+if is_installed lazygit
+    abbr gg 'lazygit'
+else
+    abbr gg 'git gui &'
+end
 
 # Package aliases
 if is_installed eza
@@ -38,5 +43,4 @@ end
 
 if is_installed chezmoi
     abbr cm 'chezmoi'
-    abbr cz 'chezmoi'
 end
