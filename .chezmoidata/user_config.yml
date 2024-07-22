@@ -5,7 +5,7 @@ user_config:
     dpkg: true
     pip: true
     fisher: true
-    snap: true
+    snap: false
     targz: true
 
   packages:
