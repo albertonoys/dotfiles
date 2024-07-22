@@ -9,6 +9,8 @@ gitleaks-new.json
 symlinked
 .pre-commit-config.yaml
 create_link.fish
+scripts/test_utils.sh
+scripts/test_utils.sh.tmpl
 
 {{- if ne .hosttype "desktop" }}
 .config/flameshot

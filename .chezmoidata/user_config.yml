@@ -38,6 +38,11 @@ user_config:
         filter: musl
         repo: sharkdp/fd
 
+      - name: delta
+        cmd: delta
+        filter: musl
+        repo: dandavison/delta
+
     pip:
       - name: tldr
         hosttype: sandbox

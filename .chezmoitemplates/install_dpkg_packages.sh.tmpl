@@ -26,6 +26,9 @@ get_installed_version() {
             fd)
                 $cmd --version | cut -d' ' -f2
                 ;;
+            delta)
+                $cmd --version | cut -d' ' -f2
+                ;;
             gum)
                 $cmd --version | cut -d' ' -f3
                 ;;
@@ -59,7 +62,7 @@ install_or_upgrade() {
     echo "Installed version: $installed_version"
     echo "Latest version: $latest_version"
 
-    if [ "$installed_version" = "Not installed" ] || version_gt "$latest_version" "$installed_version"; then
+    if [ "$installed_version" = "Not installed" ] || [ "$installed_version" = "Unknown" ] || version_gt "$latest_version" "$installed_version"; then
         echo "Installing/upgrading $package_name..."
 
         local release_info=$(curl -s "https://api.github.com/repos/$repo/releases/latest")

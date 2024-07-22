@@ -58,7 +58,16 @@ if not set -q __dotfiles_FISHER_INSTALLED
     echo "Installing Fisher..."
     curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
 
-    {{- range .user_config.packages.fisher }}
-    fisher install "{{ . }}"
-    {{- end }}
+    set fisher_packages
+    {{ range $package := .user_config.packages.fisher }}
+        {{ with $package }}
+            {{ if or (not (hasKey . "hosttype")) (eq .hosttype $.hosttype) }}
+                set -a fisher_packages "{{ .name }}"
+            {{ end }}
+        {{ end }}
+    {{ end }}
+
+    for package in $fisher_packages
+        fisher install $package
+    end
 end
