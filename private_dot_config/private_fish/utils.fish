@@ -8,7 +8,7 @@ end
 
 function add_to_path_if_exists
     if dir_exists $argv[1]
-        fish_add_path $arg[1]
+        fish_add_path $argv[1]
     end
 end
 
