@@ -3,3 +3,4 @@ gitleaks-new.json
 todo.md
 symlink_creator.fish
 scripts/test_utils.sh
+scripts/test_utils.sh.tmpl

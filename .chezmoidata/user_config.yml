@@ -13,7 +13,7 @@ user_config:
       - name: fish
       - name: git-gui
       - name: ncdu
-        hosttype: [sandbox]
+        hosttype: sandbox
 
     dpkg:
       - name: gum
@@ -38,19 +38,19 @@ user_config:
 
     pip:
       - name: tldr
-        hosttype: [sandbox]
+        hosttype: sandbox
 
     snap:
       - name: btop
-        hosttype: [sandbox]
+        hosttype: sandbox
       - name: gh
-        hosttype: [sandbox]
+        hosttype: sandbox
 
     fisher:
       - name: jorgebucaran/fisher
       - name: edc/bass
       - name: ilancosman/tide@v6
-        hosttype: [desktop]
+        hosttype: desktop
 
     targz:
       - name: lazygit

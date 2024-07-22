@@ -16,13 +16,11 @@ check_hosttype() {
     # Convert comma-separated string to array
     IFS=',' read -ra hosttype_array <<< "$hosttype"
 
-    for ht in "${hosttype_array[@]}"; do
-        if [[ "$ht" == "$CURRENT_HOSTTYPE" ]]; then
-            echo "Installing $package_name on $CURRENT_HOSTTYPE environment."
-            return 0
-        fi
-    done
-
-    echo "Skipping $package_name installation: not applicable for $CURRENT_HOSTTYPE environment."
-    return 1
+    if [[ " ${hosttype_array[@]} " =~ " $CURRENT_HOSTTYPE " ]]; then
+        echo "Installing $package_name on $CURRENT_HOSTTYPE environment."
+        return 0
+    else
+        echo "Skipping $package_name installation: not applicable for $CURRENT_HOSTTYPE environment."
+        return 1
+    fi
 }
