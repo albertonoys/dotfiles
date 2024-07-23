@@ -46,6 +46,7 @@ user_config:
     pip:
       - name: tldr
         hosttype: sandbox
+      - name: thefuck
 
     snap:
       - name: btop
