@@ -51,9 +51,6 @@ else
     set -gx EDITOR vim
 end
 
-#Use bat for man pages
-set -x MANPAGER "sh -c 'col -bx | bat -l man -p --theme 'Monokai Extended''"
-
 # Check Fisher and plugins
 if not set -q __dotfiles_FISHER_INSTALLED
     # Set the flag to indicate Fisher has been installed
