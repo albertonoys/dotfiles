@@ -51,6 +51,9 @@ else
     set -gx EDITOR vim
 end
 
+#Use bat for man pages
+set --export MANPAGER="sh -c 'sed -e s/.\\\\x08//g | bat -l man -p'"
+
 # Check Fisher and plugins
 if not set -q __dotfiles_FISHER_INSTALLED
     # Set the flag to indicate Fisher has been installed
