@@ -52,7 +52,7 @@ else
 end
 
 #Use bat for man pages
-set --export MANPAGER="sh -c 'sed -e s/.\\\\x08//g | bat -l man -p'"
+set -x MANPAGER "sh -c 'col -bx | batcat -l man -p --theme 'Monokai Extended''"
 
 # Check Fisher and plugins
 if not set -q __dotfiles_FISHER_INSTALLED
