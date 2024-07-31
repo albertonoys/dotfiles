@@ -32,6 +32,10 @@ function fish_user_key_bindings
     bind '$' bind_dollar
 end
 
+if dir_exists "/home/linuxbrew/"
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+end
+
 # Source package completions
 if status --is-interactive
     # run_if_installed fzf "fzf --fish | source"
