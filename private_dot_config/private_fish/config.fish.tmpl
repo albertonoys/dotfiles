@@ -43,6 +43,7 @@ if status --is-interactive
     run_if_installed zoxide "zoxide init fish | source"
     run_if_installed fzf "fzf --fish | source"
     run_if_installed load_nvm "load_nvm > /dev/stderr"
+    run_if_installed fnm "fnm completions --shell fish | source"
 end
 
 # Disable greeting
