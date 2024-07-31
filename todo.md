@@ -6,12 +6,13 @@
 ## Confs
 - [ ] Tilix
 - [ ] gnome-extensions
-## Install 
+## Install
 - [ ] nvim
 - [x] ts-tool
 - [ ] eza
 - [ ] zoxide
 - [x] ncdu
+- [x] gdu
 - [x] lazygit
 - [x] btop
 

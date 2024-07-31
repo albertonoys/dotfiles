@@ -16,6 +16,7 @@ user_config:
         hosttype: sandbox
       - name: ts-tool
         hosttype: sandbox
+      - name: gdu
 
     dpkg:
       - name: gum
