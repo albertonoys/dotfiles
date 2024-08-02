@@ -30,6 +30,16 @@ function ubuntuUpdate --description "Update Ubuntu packages and perform clean up
         error "Flatpak is not installed, skipping..."
     end
 
+    # Handle brew packages
+    if is_installed brew
+        info "Updating brew packages..."
+        brew outdated
+        brew update
+        brew upgrade
+    else
+        error "brew is not installed, skipping..."
+    end
+
     success "System update and cleanup complete!" true
 end
 
