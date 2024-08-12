@@ -7,9 +7,15 @@ function ubuntuUpdate --description "Update Ubuntu packages and perform clean up
         "Removing unused packages and dependencies" "sudo apt autoremove --purge -yqq"
 
     # Run update steps
-    for i in (seq 1 2 (count $update_steps))
-        info $update_steps[$i]
-        eval $update_steps[(math $i + 1)]
+
+    if is_installed nala
+        info "Upgrading packages..."
+        sudo nala upgrade --assume-yes
+    else
+        info "Getting upgradable packages..."
+        sudo apt -qq update && apt list --upgradable
+        info "Upgrading packages and removing unused..."
+        sudo apt upgrade -yqq && sudo apt autoremove --purge -yqq
     end
 
     # Handle snap packages
@@ -40,4 +46,3 @@ function ubuntuUpdate --description "Update Ubuntu packages and perform clean up
 
     success "System update and cleanup complete!" true
 end
-
