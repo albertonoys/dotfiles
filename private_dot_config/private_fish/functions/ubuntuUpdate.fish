@@ -1,13 +1,5 @@
 function ubuntuUpdate --description "Update Ubuntu packages and perform clean up"
-    # Define update steps
-    set -l update_steps \
-        "Updating package list" "sudo apt -qq update" \
-        "Listing upgradable packages" "apt list --upgradable" \
-        "Upgrading packages" "sudo apt upgrade -yqq" \
-        "Removing unused packages and dependencies" "sudo apt autoremove --purge -yqq"
-
     # Run update steps
-
     if is_installed nala
         info "Upgrading packages..."
         sudo nala upgrade --assume-yes
