@@ -44,3 +44,7 @@ end
 if is_installed chezmoi
     abbr cm 'chezmoi'
 end
+
+if is_installed btop
+    abbr top 'btop'
+end
