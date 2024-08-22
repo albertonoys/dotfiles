@@ -31,7 +31,7 @@ end
 
 # Package aliases
 if is_installed eza
-	alias ll='eza --long --group --header --all --group-directories-first --icons=auto'
+	alias ll='eza --long --group --header --all --sort modified --group-directories-first --icons=auto'
 	alias tree='eza --tree --all --icons=auto'
 	alias ls='eza --icons=auto'
 end
